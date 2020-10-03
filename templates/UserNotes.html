@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 id="title">UserNotes</h1>
+    <table id="t2" width="40%" border="1px" cellspacing="0px">
+        <th>
+            <div id="loginform">
+                    <form action="{%  url 'update_emp' user_id=userId %}" method="post">
+                        {% csrf_token %}
+                        <br />
+                        <br />
+                        <div id="notes"><input type="text" name="user_notes" placeholder="UserNotes " id="user_notes"></div>
+                        <br />
+                        <div id="dsubmit" ><input type="submit" value="Save User Notes" id="sub_id"></div>
+                        <br />
+                        <br />
+                    </form>
+             </div>
+        </th>
+    </table>
+</body>
+</html>

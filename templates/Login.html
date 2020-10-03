@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<h1 id="title">login</h1>
+    <table id="t2" width="40%" border="1px" cellspacing="0px">
+        <th>
+            <div id="loginform">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <br />
+                                <br />
+                                <div id="duname"><input type="text" name="username" placeholder="USERNAME " id="uname_id"></div>
+                                <br />
+                                <div id="dpword"><input type="password" name="password" placeholder="PASSWORD" id="pword_id"></div>
+                                <br />
+                                {{ message }}
+                                <div id="dsubmit" ><input type="submit" value="Login" id="sub_id"></div>
+                                <br />
+                                <br />
+                            </form>
+             </div>
+        </th>
+    </table>
+</body>
+</html>
