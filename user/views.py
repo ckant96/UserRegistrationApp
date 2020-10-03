@@ -52,23 +52,23 @@ def UserRegister(request):
     return render(request=request, template_name="Registration.html" , context={'Status': 'account Creation failed'})
 
 @login_required()
-def SaveUserNote(request,userId):
+def SaveUserNote(request,user):
     if request.method == 'POST':
         notes = request.POST.get('user_notes')
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * from UserNotes where username= %s ", [userId])
+            cursor.execute("SELECT * from UserNotes where username= %s ", [user])
             row = cursor.fetchall()
             if row :
                 newnote=row[0]+notes # append new note to old note string
                 cursor.execute(" UPDATE UserNotes set notes=%s",[newnote])
             else:
-                cursor.execute(" INSERT into UserNotes(userId,notes) VALUES(%s,%s)", [userId,notes])
+                cursor.execute(" INSERT into UserNotes(userId,notes) VALUES(%s,%s)", [user,notes])
         return render(request=request, template_name="UserNotes.html" , context={'Status': 'Success'})
     return render(request=request, template_name="UserNotes.html" , context={'Status': 'UnSuccess'})
 
 
 @login_required()
-def ShowUserNote(request,userId):
+def ShowUserNote(request,user):
     if request.method == 'GET':
         with connection.cursor() as cursor:
             cursor.execute("SELECT * from UserNotes where username= %s ", [userId])
