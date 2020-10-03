@@ -71,7 +71,7 @@ def SaveUserNote(request,user):
 def ShowUserNote(request,user):
     if request.method == 'GET':
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * from UserNotes where username= %s ", [userId])
+            cursor.execute("SELECT * from UserNotes where username= %s ", [user])
             row = cursor.fetchall()
             note_list=[]
             if row :
